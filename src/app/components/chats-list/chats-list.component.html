@@ -1,11 +1,6 @@
 <p>Chats</p>
-<ul>
-  <li *ngFor="let chat of chats" class="item">
-    <a [routerLink]="['./', chat.id]">
-      <img [src]="chat.opponent.avatar" alt="opponent avatar" class="item__image">
-      {{chat.opponent.nickname}}
-    </a>
+<ul class="list">
+  <li *ngFor="let chat of chats" class="list__item">
+    <app-chats-list-item [chat]="chat"></app-chats-list-item>
   </li>
 </ul>
-<router-outlet></router-outlet>
-

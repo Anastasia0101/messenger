@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, switchMap } from 'rxjs';
+import { switchMap } from 'rxjs';
 import { Chat } from 'src/app/models/chat.model';
 import { ChatsService } from 'src/app/services/chats.service';
 
@@ -10,6 +10,7 @@ import { ChatsService } from 'src/app/services/chats.service';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
+
   chat!: Chat;
 
   constructor(
