@@ -11,7 +11,7 @@ export const chats: Chat[] = [
       nickname: 'Nastya777',
       avatar: '../assets/pngtree-cute-girl-avatar-is-available-for-commercial-use-png-image_678746.jpg'
     },
-    messages: ['Hello']
+    messages: []
   },
   {
     id: 2,
@@ -23,6 +23,6 @@ export const chats: Chat[] = [
       nickname: 'Nastya777',
       avatar: '../assets/pngtree-cute-girl-avatar-is-available-for-commercial-use-png-image_678746.jpg'
     },
-    messages: ['Goodbye']
+    messages: []
   },
 ];

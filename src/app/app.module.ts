@@ -10,6 +10,8 @@ import { MessengerComponent } from './components/messenger/messenger.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ChatsListItemComponent } from './components/chats-list-item/chats-list-item.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { MessageFormComponent } from './components/message-form/message-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,11 +21,14 @@ import { ChatComponent } from './components/chat/chat.component';
     MessengerComponent,
     SidebarComponent,
     ChatsListItemComponent,
-    ChatComponent
+    ChatComponent,
+    MessageFormComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     ChatsService
