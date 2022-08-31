@@ -1,19 +1,22 @@
 import { Injectable } from "@angular/core";
 import { Chat } from "../models/chat.model";
-import { chats } from '../data/chats';
 import { Observable } from "rxjs/internal/Observable";
-import { of } from "rxjs";
+import { map } from "rxjs";
+import { AngularFirestore } from "@angular/fire/compat/firestore";
 
-Injectable({
+@Injectable({
   providedIn: 'root',
 })
 export class ChatsService {
+  constructor(
+    private fireStore: AngularFirestore
+  ) {}
   getChats(): Observable<Chat[]> {
-    return of(chats);
+    return this.fireStore.collection<Chat>('chats').valueChanges({idField: 'id'});
   }
 
-  getChatById(id: number): Observable<Chat> {
-    return of(chats.find(el => el.id == id)!);
+  getChatById(id: string): Observable<Chat | undefined> {
+    return this.fireStore.collection<Chat>(`chats`).doc(id).valueChanges();
   }
 }
 

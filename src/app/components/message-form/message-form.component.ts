@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ChatsService } from 'src/app/services/chats.service';
 import { checkMessageNotEmptyValidator } from 'src/app/validators/not-empty-message.validator';
 
 @Component({
@@ -15,14 +16,15 @@ export class MessageFormComponent implements OnInit {
     ]]
   });
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private chatsService: ChatsService
   ) { }
 
   ngOnInit(): void {
   }
 
   onFormSubmit(): void {
-    console.log(this.messageForm.invalid);
+    console.log(this.messageForm.value);
   }
 }
 

@@ -1,5 +1,5 @@
 <form [formGroup]="messageForm" (ngSubmit)="onFormSubmit()">
-  <input type="text" formControlName="text"/>
+  <input type="text" formControlName="text" placeholder="Type your message"/>
   <button type="submit" [disabled]="messageForm.invalid">
     <span class="material-symbols-outlined">
       send

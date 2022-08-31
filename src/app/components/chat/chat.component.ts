@@ -11,7 +11,7 @@ import { ChatsService } from 'src/app/services/chats.service';
 })
 export class ChatComponent implements OnInit {
 
-  chat!: Chat;
+  chat?: Chat;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,7 +21,7 @@ export class ChatComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.pipe(
       switchMap(params => {
-        return this.chatsService.getChatById(+params.get('id')!)
+        return this.chatsService.getChatById(params.get('id')!)
       })
     ).subscribe(chat => this.chat = chat);
   }
