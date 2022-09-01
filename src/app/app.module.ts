@@ -20,7 +20,6 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from 'src/environments/environment';
 import { MessagesListComponent } from './components/messages-list/messages-list.component';
-import { UserService } from './services/users.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +44,6 @@ import { UserService } from './services/users.service';
   ],
   providers: [
     ChatsService,
-    UserService
   ],
   bootstrap: [AppComponent]
 })
