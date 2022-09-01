@@ -1,6 +1,7 @@
 <p>Chats</p>
-<ul class="list">
+<ul *ngIf="chats" class="list">
   <li *ngFor="let chat of chats" class="list__item">
+    {{chat}}
     <app-chats-list-item [chat]="chat"></app-chats-list-item>
   </li>
 </ul>

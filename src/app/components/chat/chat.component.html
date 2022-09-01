@@ -1,3 +1,7 @@
-<p *ngIf="chat">{{ chat.opponent.nickname }}</p>
+<ng-container *ngIf="chat">
+  <p>{{ chat.opponent.nickname }}</p>
 
-<app-message-form></app-message-form>
+  <app-messages-list [messages]="chat.messages"></app-messages-list>
+  <app-message-form [chat]="chat"></app-message-form>
+
+</ng-container>

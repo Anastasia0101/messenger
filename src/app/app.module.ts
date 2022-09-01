@@ -12,12 +12,15 @@ import { ChatsListItemComponent } from './components/chats-list-item/chats-list-
 import { ChatComponent } from './components/chat/chat.component';
 import { MessageFormComponent } from './components/message-form/message-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from 'src/environments/environment';
+import { MessagesListComponent } from './components/messages-list/messages-list.component';
+import { UserService } from './services/users.service';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,7 @@ import { environment } from 'src/environments/environment';
     ChatsListItemComponent,
     ChatComponent,
     MessageFormComponent,
+    MessagesListComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,10 +40,12 @@ import { environment } from 'src/environments/environment';
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    HttpClientModule,
   ],
   providers: [
-    ChatsService
+    ChatsService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
