@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Chat } from 'src/app/models/chat.model';
 
 @Component({
@@ -6,10 +6,6 @@ import { Chat } from 'src/app/models/chat.model';
   templateUrl: './chats-list-item.component.html',
   styleUrls: ['./chats-list-item.component.scss']
 })
-export class ChatsListItemComponent implements OnInit {
+export class ChatsListItemComponent {
   @Input() chat!: Chat;
-
-  ngOnInit(): void {
-
-  }
 }

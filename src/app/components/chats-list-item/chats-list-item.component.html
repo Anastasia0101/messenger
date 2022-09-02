@@ -1,8 +1,10 @@
 <a *ngIf="chat" [routerLink]="['./', chat.id]" class="link">
   <img [src]="chat.opponent.avatar" alt="opponent avatar" class="link__image"/>
-  <div class="link__content">
-    <p>{{chat.opponent.nickname}}</p>
-    <p>last message</p>
+  <div class="link__chat-info chat-info">
+    <div class="chat-info__header">
+      <p class="nickname">{{chat.opponent.nickname}}</p>
+      <p class="date">June 20 2022</p>
+    </div>
+    <p class="chat-info__message">last message</p>
   </div>
-  <p class="link__date">June 20 2022</p>
 </a>

@@ -1,22 +1,46 @@
+@import '../../../scss/styles.scss';
+
 .link {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  @include component-border;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .link__image {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
+  margin-right: 10px;
 }
 
-.link__content {
-  text-align: left;
-  flex-grow: 2;
-}
-
-.link__date {
+.link__chat-info {
   text-align: left;
   flex-grow: 1;
+  width: 80%;
+}
+
+.chat-info__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nickname {
+  @include main-text;
+  @include text-overflow;
+}
+
+.date {
+  @include secondary-text;
+  color: #000000;
+  font-weight: 300
+}
+
+.chat-info__message {
+  @include secondary-text;
+  margin-top: 5px;
+  @include text-overflow;
 }

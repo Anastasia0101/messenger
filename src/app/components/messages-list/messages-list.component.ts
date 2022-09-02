@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Message } from 'src/app/models/message.model';
 import { User } from 'src/app/models/user.model';
+import { ChatsService } from 'src/app/services/chats.service';
 
 @Component({
   selector: 'app-messages-list',
@@ -12,7 +13,10 @@ export class MessagesListComponent implements OnInit {
   currentUser!: User;
   opponent!: User;
 
+  constructor(private chatsService: ChatsService) {}
+
   ngOnInit(): void {
-    // this.opponent = this.userService.opponent;
+    this.currentUser = this.chatsService.activeChat.currentUser;
+    this.opponent = this.chatsService.activeChat.opponent;
   }
 }

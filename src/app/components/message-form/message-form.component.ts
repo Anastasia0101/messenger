@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { Chat } from 'src/app/models/chat.model';
 import { ChatsService } from 'src/app/services/chats.service';
 import { checkMessageNotEmptyValidator } from 'src/app/validators/not-empty-message.validator';
@@ -30,6 +30,7 @@ export class MessageFormComponent implements OnInit {
     const messageText = this.messageForm.value.text as string;
     this.chatsService.sendMessage(messageText, this.chatsService.activeChat.currentUser);
     this.chatsService.getJokeAnswer();
+    this.messageForm.patchValue({text: ''})
   }
 }
 

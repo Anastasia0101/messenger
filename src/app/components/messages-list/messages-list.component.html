@@ -1,13 +1,19 @@
-<p>messages-list works!</p>
-<!-- <ul *ngIf="messages" class="messages">
-  <li *ngFor="let message of messages" class="messages__item item">
-    <ng-container *ngIf="opponent">
-      <img [src]="opponent.avatar" *ngIf="message.sender.nickname === currentUser.nickname" class="item__avatar" alt="opponent`s avatar">
-      <p [ngClass]="{'message--right': message.sender.nickname === currentUser.nickname}">{{message.text}}</p>
-    {{currentUser.nickname}}
-    </ng-container>
-    <ng-container>
-      <p [ngClass]="{'message--right': message.sender.nickname === currentUser.nickname}">{{message.text}}</p>
-    </ng-container>
+<ul *ngIf="messages" class="messages">
+  <li
+    *ngFor="let message of messages"
+    class="messages__item item"
+    [ngClass]="{'item--right': message.sender.nickname == currentUser.nickname}"
+  >
+    <img [src]="opponent.avatar" *ngIf="message.sender.nickname != currentUser.nickname" class="item__avatar" alt="opponent`s avatar">
+    <div class="item__message message">
+      <p
+        [ngClass]="{'message__text--right': message.sender.nickname == currentUser.nickname}"
+        class="message__text"
+      >{{message.text}}</p>
+      <p
+        [ngClass]="{'message--right': message.sender.nickname == currentUser.nickname}"
+        class="message__date"
+      >{{message.dateOfSending}}</p>
+    </div>
   </li>
-</ul> -->
+</ul>

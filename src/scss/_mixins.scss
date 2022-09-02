@@ -1,0 +1,23 @@
+@mixin component-border {
+  border-bottom: 1px solid #EFEFEF;
+}
+
+@mixin main-text {
+  font-family: 'Mulish', sans-serif;
+  font-size: 15px;
+  color: #000;
+}
+
+@mixin secondary-text {
+  @include main-text;
+  color: #9F9F9F;
+  font-size: 13px;
+}
+
+@mixin text-overflow {
+  width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
