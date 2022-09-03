@@ -1,19 +1,12 @@
-<ul *ngIf="messages" class="messages">
+<ul *ngIf="messages" class="messages" #messagesList>
   <li
     *ngFor="let message of messages"
     class="messages__item item"
     [ngClass]="{'item--right': message.sender.nickname == currentUser.nickname}"
   >
-    <img [src]="opponent.avatar" *ngIf="message.sender.nickname != currentUser.nickname" class="item__avatar" alt="opponent`s avatar">
-    <div class="item__message message">
-      <p
-        [ngClass]="{'message__text--right': message.sender.nickname == currentUser.nickname}"
-        class="message__text"
-      >{{message.text}}</p>
-      <p
-        [ngClass]="{'message--right': message.sender.nickname == currentUser.nickname}"
-        class="message__date"
-      >{{message.dateOfSending}}</p>
-    </div>
+    <app-messages-list-item
+      [message]="message"
+      [currentUser]="currentUser"
+    ></app-messages-list-item>
   </li>
 </ul>

@@ -1,7 +1,8 @@
+import { Timestamp } from "rxjs";
 import { User } from "./user.model";
 
 export interface Message {
   text: string;
-  dateOfSending: Date;
+  dateOfSending: string;
   sender: User;
 }

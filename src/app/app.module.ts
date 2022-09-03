@@ -20,6 +20,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from 'src/environments/environment';
 import { MessagesListComponent } from './components/messages-list/messages-list.component';
+import { MessagesListItemComponent } from './components/messages-list-item/messages-list-item.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MessagesListComponent } from './components/messages-list/messages-list.
     ChatComponent,
     MessageFormComponent,
     MessagesListComponent,
+    MessagesListItemComponent,
   ],
   imports: [
     BrowserModule,

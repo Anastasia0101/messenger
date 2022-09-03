@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Message } from 'src/app/models/message.model';
 import { User } from 'src/app/models/user.model';
 import { ChatsService } from 'src/app/services/chats.service';
@@ -8,15 +8,18 @@ import { ChatsService } from 'src/app/services/chats.service';
   templateUrl: './messages-list.component.html',
   styleUrls: ['./messages-list.component.scss']
 })
-export class MessagesListComponent implements OnInit {
+export class MessagesListComponent {
   @Input() messages?: Message[];
+  @ViewChild('messagesList') messagesListEl!: ElementRef;
   currentUser!: User;
-  opponent!: User;
 
   constructor(private chatsService: ChatsService) {}
 
   ngOnInit(): void {
     this.currentUser = this.chatsService.activeChat.currentUser;
-    this.opponent = this.chatsService.activeChat.opponent;
+  }
+
+  ngAfterViewChecked(): void {
+    this.messagesListEl.nativeElement.scrollTop = this.messagesListEl.nativeElement.scrollHeight;
   }
 }

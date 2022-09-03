@@ -12,7 +12,7 @@ import { JokeAnswer } from "../models/joke-answer.model";
 })
 export class ChatsService {
   activeChat!: Chat;
-  currentDate = new Date();
+
 
   constructor(
     private fireStore: AngularFirestore,
@@ -21,6 +21,15 @@ export class ChatsService {
 
   getChats(): Observable<Chat[]> {
     return this.fireStore.collection<Chat>('chats').valueChanges({ idField: 'id' });
+  }
+
+  saveChat(): void{
+    const currentDate = new Date();
+    this.fireStore.collection('chats').add({
+      currentUser: this.activeChat.currentUser,
+      opponent: { nickname: 'Katya202', avatar: this.activeChat.opponent.avatar },
+      messages: [{ text: 'Hola!', sender: this.activeChat.currentUser, dateOfSending: currentDate.toString() }]
+    });
   }
 
   getChatById(id: string): Observable<Chat> {
@@ -38,7 +47,8 @@ export class ChatsService {
   }
 
   sendMessage(messageText: string, sender: User): Observable<void> {
-    const message = { text: messageText, sender: sender, dateOfSending: this.currentDate };
+    const currentDate = new Date();
+    const message = { text: messageText, sender: sender, dateOfSending: currentDate.toString() };
     return from(this.fireStore.collection<Chat>('chats').doc(this.activeChat.id).update({
       ...this.activeChat, messages: [...this.activeChat.messages, message]
     }));

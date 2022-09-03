@@ -1,0 +1,21 @@
+<div *ngIf="message" class="item">
+  <img
+    [src]="message.sender.avatar"
+    *ngIf="message.sender.nickname != currentUser.nickname"
+    class="avatar"
+    alt="opponent`s avatar"
+  />
+  <div class="message">
+    <div class="message__text">
+      <p
+      [ngClass]="{'text--right': message.sender.nickname == currentUser.nickname}"
+      class="text"
+      >{{message.text}}</p>
+    </div>
+    <p
+      [ngClass]="{'date--right': message.sender.nickname == currentUser.nickname}"
+      class="message__date"
+    >{{ message.dateOfSending | date: 'short'}}</p>
+  </div>
+</div>
+

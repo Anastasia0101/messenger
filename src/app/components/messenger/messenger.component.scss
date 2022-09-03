@@ -1,4 +1,12 @@
 .messenger {
   display: flex;
-  justify-content: center;
+}
+
+.messenger__sidebar {
+  width: 40%;
+  max-width: 400px;
+}
+
+.messager__chat {
+  width: 60%;
 }

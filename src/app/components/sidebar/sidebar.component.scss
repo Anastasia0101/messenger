@@ -1,5 +1,8 @@
 .sidebar {
-  max-width: 300px;
-  // width: 40%;
-  border-right: 1px solid #EFEFEF;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none;
 }

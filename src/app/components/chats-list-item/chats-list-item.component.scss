@@ -36,11 +36,18 @@
 .date {
   @include secondary-text;
   color: #000000;
-  font-weight: 300
+  font-weight: 300;
+  margin-left: 5px;
 }
 
 .chat-info__message {
   @include secondary-text;
-  margin-top: 5px;
   @include text-overflow;
+  line-height: 20px;
+}
+
+@media screen and (max-width: 650px) {
+  .date {
+    display: none;
+  }
 }

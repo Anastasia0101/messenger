@@ -11,7 +11,7 @@
 @mixin secondary-text {
   @include main-text;
   color: #9F9F9F;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 @mixin text-overflow {
