@@ -1,0 +1,18 @@
+@import '../../../scss/styles.scss';
+
+.user {
+  display: flex;
+  align-items: center;
+  @include component-border;
+  background-color: #F5F5F5;
+}
+
+.user__avatar {
+  @include avatar;
+  margin: 10px;
+}
+
+.user__nickname {
+  @include main-text;
+}
+

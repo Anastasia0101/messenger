@@ -13,7 +13,7 @@
       >{{message.text}}</p>
     </div>
     <p
-      [ngClass]="{'date--right': message.sender.nickname == currentUser.nickname}"
+      [ngClass]="{'message__date--right': message.sender.nickname == currentUser.nickname}"
       class="message__date"
     >{{ message.dateOfSending | date: 'short'}}</p>
   </div>

@@ -2,6 +2,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  margin-right: 10px;
 }
 
 .item {
@@ -11,6 +12,7 @@
 .message__text {
   display: flex;
   justify-content: flex-end;
+  margin: 5px 0;
 }
 
 .text {
@@ -26,6 +28,11 @@
   color: #000000;
 }
 
-.date--right {
+.message__date {
+  margin: 0 0.8em;
+}
+
+.message__date--right {
   text-align: right;
+
 }

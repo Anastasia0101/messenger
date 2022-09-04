@@ -1,5 +1,5 @@
 <div *ngIf="chat" class="chat">
-  <p>{{ chat.opponent.nickname }}</p>
+  <app-chat-header [opponent]="chat.opponent"></app-chat-header>
   <app-messages-list [messages]="chat.messages"></app-messages-list>
   <app-message-form [chat]="chat"></app-message-form>
 </div>

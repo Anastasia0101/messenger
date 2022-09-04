@@ -21,6 +21,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from 'src/environments/environment';
 import { MessagesListComponent } from './components/messages-list/messages-list.component';
 import { MessagesListItemComponent } from './components/messages-list-item/messages-list-item.component';
+import { ChatHeaderComponent } from './components/chat-header/chat-header.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { MessagesListItemComponent } from './components/messages-list-item/messa
     MessageFormComponent,
     MessagesListComponent,
     MessagesListItemComponent,
+    ChatHeaderComponent,
   ],
   imports: [
     BrowserModule,
