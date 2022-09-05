@@ -1,0 +1,11 @@
+<div>
+  <div *ngIf="!user">
+    <button (click)="signInWithGoogle()">sign with google</button>
+  </div>
+  <div *ngIf="user">
+    <h6>Social Login</h6>
+    <p>{{user.name}}</p>
+    <p>{{user.email}}</p>
+    <button (click)="signOut()">Sign Out</button>
+  </div>
+</div>

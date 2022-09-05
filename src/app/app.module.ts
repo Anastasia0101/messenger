@@ -18,10 +18,16 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { environment } from 'src/environments/environment';
 import { MessagesListComponent } from './components/messages-list/messages-list.component';
 import { MessagesListItemComponent } from './components/messages-list-item/messages-list-item.component';
 import { ChatHeaderComponent } from './components/chat-header/chat-header.component';
+import { SeacherComponent } from './components/seacher/seacher.component';
+import { UsersService } from './services/users.service';
+import { LoginComponent } from './components/login/login.component';
+
+import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -36,6 +42,8 @@ import { ChatHeaderComponent } from './components/chat-header/chat-header.compon
     MessagesListComponent,
     MessagesListItemComponent,
     ChatHeaderComponent,
+    SeacherComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,9 +53,25 @@ import { ChatHeaderComponent } from './components/chat-header/chat-header.compon
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     HttpClientModule,
+    SocialLoginModule
   ],
   providers: [
     ChatsService,
+    UsersService,
+    {
+      provide: "SocialAuthServiceConfig",
+      useValue: {
+        autoLogin: true,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              environment.clientId_id
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig
+    }
   ],
   bootstrap: [AppComponent]
 })

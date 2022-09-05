@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Chat } from 'src/app/models/chat.model';
 import { ChatsService } from 'src/app/services/chats.service';
+import { UsersService } from 'src/app/services/users.service';
 import { checkMessageNotEmptyValidator } from 'src/app/validators/not-empty-message.validator';
 
 @Component({
