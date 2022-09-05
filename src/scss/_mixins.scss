@@ -1,5 +1,5 @@
 @mixin component-border {
-  border-bottom: 1px solid #EFEFEF;
+  border-bottom: 1px solid $borderColor;
 }
 
 @mixin main-text {

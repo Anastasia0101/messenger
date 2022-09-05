@@ -1,0 +1,38 @@
+@import '../../../scss/styles.scss';
+
+.form {
+  display: flex;
+  background-color: $darkBackground;
+  height: 11%;
+  box-sizing: border-box;
+}
+
+.form-fields {
+  display: flex;
+  margin: auto;
+  width: 90%;
+  background: #FFFFFF;
+  border: 1px solid $borderColor;
+  border-radius: 30px;
+  padding: 6px;
+}
+
+.form-fields__input {
+  width: 90%;
+  border: none;
+  padding: 10px;
+}
+
+.form-fields__input:focus {
+  outline: none;
+}
+
+.form-fields__input::placeholder {
+  @include secondary-text;
+  font-size: 14px;
+}
+
+.form-fields__button {
+  border: none;
+  background: #FFFFFF;
+}

@@ -4,7 +4,8 @@
   display: flex;
   align-items: center;
   @include component-border;
-  background-color: #F5F5F5;
+  background-color: $darkBackground;
+  height: 10%;
 }
 
 .user__avatar {

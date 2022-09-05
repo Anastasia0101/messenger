@@ -9,7 +9,7 @@ import { checkMessageNotEmptyValidator } from 'src/app/validators/not-empty-mess
   templateUrl: './message-form.component.html',
   styleUrls: ['./message-form.component.scss']
 })
-export class MessageFormComponent implements OnInit {
+export class MessageFormComponent {
   @Input() chat!: Chat;
   chats!: Chat[];
 
@@ -18,13 +18,11 @@ export class MessageFormComponent implements OnInit {
       checkMessageNotEmptyValidator()
     ]]
   });
+
   constructor(
     private formBuilder: FormBuilder,
     private chatsService: ChatsService,
   ) { }
-
-  ngOnInit(): void {
-  }
 
   onFormSubmit(): void {
     const messageText = this.messageForm.value.text as string;
