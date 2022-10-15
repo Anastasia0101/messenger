@@ -9,15 +9,13 @@ import { ChatsService } from 'src/app/services/chats.service';
   styleUrls: ['./chats-list.component.scss']
 })
 export class ChatsListComponent implements OnInit {
-  chats!: Chat[];
+  chats$!: Observable<Chat[]>;
 
   constructor(
     public chatsService: ChatsService
   ) { }
 
   ngOnInit(): void {
-    this.chatsService.getChats().subscribe((chats: Chat[]) => {
-      this.chats = chats;
-    });
+    this.chats$ = this.chatsService.chats$;
   }
 }

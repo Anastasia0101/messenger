@@ -1,7 +1,7 @@
 <div class="chats-list">
   <p class="chats-list__title">Chats</p>
-  <ul *ngIf="chats" class="chats-list__list list">
-    <li *ngFor="let chat of chats" class="list__item">
+  <ul *ngIf="chats$" class="chats-list__list list">
+    <li *ngFor="let chat of chats$ | async" class="list__item">
       <app-chats-list-item [chat]="chat"></app-chats-list-item>
     </li>
   </ul>

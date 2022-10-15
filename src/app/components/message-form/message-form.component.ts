@@ -29,7 +29,7 @@ export class MessageFormComponent {
     const messageText = this.messageForm.value.text as string;
     this.chatsService.sendMessage(messageText, this.chatsService.activeChat.currentUser);
     this.chatsService.getJokeAnswer();
-    this.messageForm.patchValue({text: ''})
+    this.messageForm.patchValue({text: ''});
   }
 }
 

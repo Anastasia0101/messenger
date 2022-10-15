@@ -13,7 +13,6 @@ import { JokeAnswer } from "../models/joke-answer.model";
 export class ChatsService {
   activeChat!: Chat;
 
-
   constructor(
     private fireStore: AngularFirestore,
     private httpClient: HttpClient,
@@ -21,6 +20,10 @@ export class ChatsService {
 
   getChats(): Observable<Chat[]> {
     return this.fireStore.collection<Chat>('chats').valueChanges({ idField: 'id' });
+  }
+
+  get chats$(): Observable<Chat[]> {
+    return this.getChats();
   }
 
   saveChat(): void{
@@ -64,4 +67,3 @@ export class ChatsService {
     ).subscribe();
   }
 }
-
