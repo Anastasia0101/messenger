@@ -1,11 +1,6 @@
-@mixin component-border {
-  border-bottom: 1px solid $borderColor;
-}
-
 @mixin main-text {
   font-family: 'Mulish', sans-serif;
   font-size: 15px;
-  color: #000;
 }
 
 @mixin secondary-text {

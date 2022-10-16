@@ -2,7 +2,7 @@
   <li
     *ngFor="let message of messages"
     class="messages__item item"
-    [ngClass]="{'item--right': message.sender.nickname == currentUser.nickname}"
+    [ngClass]="{'item--right': message.sender.nickname === currentUser.nickname}"
   >
     <app-messages-list-item
       [message]="message"

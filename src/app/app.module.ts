@@ -21,10 +21,7 @@ import { MessagesListComponent } from './components/messages-list/messages-list.
 import { MessagesListItemComponent } from './components/messages-list-item/messages-list-item.component';
 import { ChatHeaderComponent } from './components/chat-header/chat-header.component';
 import { UsersService } from './services/users.service';
-import { LoginComponent } from './components/login/login.component';
 
-import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
-import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
 import { environment } from 'src/environments/environment';
 
 @NgModule({
@@ -40,7 +37,6 @@ import { environment } from 'src/environments/environment';
     MessagesListComponent,
     MessagesListItemComponent,
     ChatHeaderComponent,
-    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,25 +48,10 @@ import { environment } from 'src/environments/environment';
     AngularFireStorageModule,
     AngularFireAuthModule,
     HttpClientModule,
-    SocialLoginModule
   ],
   providers: [
     ChatsService,
-    UsersService,
-    {
-      provide: "SocialAuthServiceConfig",
-      useValue: {
-        autoLogin: true,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              environment.clientId_id
-            )
-          }
-        ]
-      } as SocialAuthServiceConfig
-    }
+    UsersService
   ],
   bootstrap: [AppComponent]
 })

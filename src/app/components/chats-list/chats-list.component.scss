@@ -3,9 +3,14 @@
 }
 
 .chats-list__list {
-  margin-top: 30px;
+  // margin-top: 30px;
+  margin: 30px auto;
 }
 
 .list {
   width: 100%;
+}
+
+.list__item {
+  margin-bottom: 2%;
 }

@@ -1,9 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Chat } from 'src/app/models/chat.model';
 import { ChatsService } from 'src/app/services/chats.service';
-import { UsersService } from 'src/app/services/users.service';
-import { checkMessageNotEmptyValidator } from 'src/app/validators/not-empty-message.validator';
 
 @Component({
   selector: 'app-message-form',
@@ -15,9 +13,7 @@ export class MessageFormComponent {
   chats!: Chat[];
 
   messageForm = this.formBuilder.group({
-    text: ['', [
-      checkMessageNotEmptyValidator()
-    ]]
+    text: ['', Validators.required]
   });
 
   constructor(
@@ -27,9 +23,11 @@ export class MessageFormComponent {
 
   onFormSubmit(): void {
     const messageText = this.messageForm.value.text as string;
-    this.chatsService.sendMessage(messageText, this.chatsService.activeChat.currentUser);
-    this.chatsService.getJokeAnswer();
     this.messageForm.patchValue({text: ''});
+    if(!messageText.trim()) {
+      return;
+    }
+    this.chatsService.sendMessage(messageText, this.chatsService.activeChat.currentUser);
   }
 }
 

@@ -3,9 +3,8 @@ import { Chat } from "../models/chat.model";
 import { Observable } from "rxjs/internal/Observable";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 import { HttpClient } from '@angular/common/http';
-import { delay, switchMap, from, tap, map, timer, timeout } from "rxjs";
+import { from, tap, map } from "rxjs";
 import { User } from "../models/user.model";
-import { JokeAnswer } from "../models/joke-answer.model";
 
 @Injectable({
   providedIn: 'root',
@@ -55,15 +54,5 @@ export class ChatsService {
     return from(this.fireStore.collection<Chat>('chats').doc(this.activeChat.id).update({
       ...this.activeChat, messages: [...this.activeChat.messages, message]
     }));
-  }
-
-  getJokeAnswer(): void {
-    this.httpClient.get<JokeAnswer>('https://api.chucknorris.io/jokes/random').pipe(
-      map(res => res.value),
-      delay(5000),
-      switchMap(answer => (
-        this.sendMessage(answer, this.activeChat.opponent)
-      ))
-    ).subscribe();
   }
 }

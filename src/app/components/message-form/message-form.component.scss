@@ -2,25 +2,24 @@
 
 .form {
   display: flex;
-  background-color: $darkBackground;
   height: 11%;
   box-sizing: border-box;
+  width: 100%;
+  padding: 0 5%;
 }
 
 .form-fields {
   display: flex;
-  margin: auto;
-  width: 90%;
+  // margin: auto;
+  width: 100%;
   background: #FFFFFF;
-  border: 1px solid $borderColor;
-  border-radius: 30px;
-  padding: 6px;
+  // padding: 6px;
 }
 
 .form-fields__input {
   width: 90%;
   border: none;
-  padding: 10px;
+  // padding: 10px;
 }
 
 .form-fields__input:focus {
@@ -33,6 +32,13 @@
 }
 
 .form-fields__button {
+  width: 10%;
   border: none;
   background: #FFFFFF;
+}
+
+.img {
+  width: 35px;
+  height: 35px;
+  rotate: 100deg;
 }

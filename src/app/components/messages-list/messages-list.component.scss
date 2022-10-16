@@ -1,9 +1,11 @@
 .messages {
   display: flex;
-  flex-direction: column ;
+  flex-direction: column;
+  width: 100%;
   height: 78%;
   overflow-y: scroll;
-  padding: 1%;
+  padding: 5%;
+  box-sizing: border-box;
 }
 
 .messages__item {

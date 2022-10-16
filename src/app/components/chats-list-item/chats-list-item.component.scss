@@ -5,9 +5,15 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  @include component-border;
   padding: 10px;
   box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #dbd9d9;
+}
+
+.link--selected {
+  background-color: #30333f;
+  color: #FFFFFF;
 }
 
 .link__image {
@@ -33,9 +39,9 @@
   @include text-overflow;
 }
 
-.date {
+.time {
   @include secondary-text;
-  color: #000000;
+  // color: #000000;
   font-weight: 300;
   margin-left: 5px;
 }
@@ -47,7 +53,7 @@
 }
 
 @media screen and (max-width: 650px) {
-  .date {
+  .time {
     display: none;
   }
 }

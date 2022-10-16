@@ -16,16 +16,16 @@
 }
 
 .text {
-  color: #FFFFFF;
+  color: #000000;
   padding: 0.8em;
-  background-color: #3c4153;
+  background-color: #e7eff7;
   border-radius: 20px;
   max-width: 400px;
 }
 
 .text--right {
-  background-color: #E0E0E0;
-  color: #000000;
+  background-image: linear-gradient(to right, #7865e9, #b970f5);
+  color: #FFFFFF;
 }
 
 .message__date {
@@ -34,5 +34,4 @@
 
 .message__date--right {
   text-align: right;
-
 }

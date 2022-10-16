@@ -3,7 +3,6 @@
 .user {
   display: flex;
   align-items: center;
-  @include component-border;
   background-color: $darkBackground;
   height: 10%;
 }
@@ -16,4 +15,3 @@
 .user__nickname {
   @include main-text;
 }
-
