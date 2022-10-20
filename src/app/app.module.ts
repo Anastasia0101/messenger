@@ -21,8 +21,9 @@ import { MessagesListComponent } from './components/messages-list/messages-list.
 import { MessagesListItemComponent } from './components/messages-list-item/messages-list-item.component';
 import { ChatHeaderComponent } from './components/chat-header/chat-header.component';
 import { UsersService } from './services/users.service';
-
+import { MatIconModule } from '@angular/material/icon';
 import { environment } from 'src/environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,8 @@ import { environment } from 'src/environments/environment';
     AngularFireStorageModule,
     AngularFireAuthModule,
     HttpClientModule,
+    MatIconModule,
+    BrowserAnimationsModule
   ],
   providers: [
     ChatsService,

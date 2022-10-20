@@ -2,43 +2,38 @@
 
 .form {
   display: flex;
-  height: 11%;
+  align-items: center;
+  height: 8%;
   box-sizing: border-box;
   width: 100%;
   padding: 0 5%;
 }
 
-.form-fields {
-  display: flex;
-  // margin: auto;
-  width: 100%;
-  background: #FFFFFF;
-  // padding: 6px;
-}
-
-.form-fields__input {
+.form__input {
   width: 90%;
   border: none;
-  // padding: 10px;
 }
 
-.form-fields__input:focus {
+.form__input:focus {
   outline: none;
 }
 
-.form-fields__input::placeholder {
+.form__input::placeholder {
   @include secondary-text;
   font-size: 14px;
 }
 
-.form-fields__button {
-  width: 10%;
+.form__button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 0;
   border: none;
-  background: #FFFFFF;
+  background: none;
 }
 
-.img {
-  width: 35px;
-  height: 35px;
-  rotate: 100deg;
+.mat-icon {
+  font-size: 25px;
+  width: 30px;
+  overflow: visible;
 }
