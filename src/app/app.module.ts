@@ -24,6 +24,7 @@ import { UsersService } from './services/users.service';
 import { MatIconModule } from '@angular/material/icon';
 import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChatNotSelectedComponent } from './components/chat-not-selected/chat-not-selected.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MessagesListComponent,
     MessagesListItemComponent,
     ChatHeaderComponent,
+    ChatNotSelectedComponent,
   ],
   imports: [
     BrowserModule,

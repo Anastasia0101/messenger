@@ -1,0 +1,10 @@
+@import '../../../scss/styles.scss';
+
+.text {
+  @include main-text;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 1px;
+}
