@@ -6,4 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./chat-not-selected.component.scss']
 })
 export class ChatNotSelectedComponent {
+
 }

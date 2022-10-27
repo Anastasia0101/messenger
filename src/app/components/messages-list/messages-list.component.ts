@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterContentInit, AfterViewChecked, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Message } from 'src/app/models/message.model';
 import { User } from 'src/app/models/user.model';
 import { ChatsService } from 'src/app/services/chats.service';
@@ -8,7 +8,7 @@ import { ChatsService } from 'src/app/services/chats.service';
   templateUrl: './messages-list.component.html',
   styleUrls: ['./messages-list.component.scss']
 })
-export class MessagesListComponent {
+export class MessagesListComponent implements OnInit, AfterViewChecked {
   @Input() messages?: Message[];
   @ViewChild('messagesList') messagesListEl!: ElementRef;
   currentUser!: User;

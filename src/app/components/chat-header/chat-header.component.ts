@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { User } from 'src/app/models/user.model';
 
 @Component({
@@ -7,6 +7,5 @@ import { User } from 'src/app/models/user.model';
   styleUrls: ['./chat-header.component.scss']
 })
 export class ChatHeaderComponent {
-
   @Input() opponent!: User;
 }

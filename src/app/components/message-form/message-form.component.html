@@ -1,6 +1,9 @@
 <form [formGroup]="messageForm" (ngSubmit)="onFormSubmit()" class="form">
+  <button type="submit" class="form__button">
+    <mat-icon fontIcon="attach_file" class="icon icon--rotated"></mat-icon>
+  </button>
   <input type="text" formControlName="text" class="form__input" placeholder="Type your message..."/>
   <button type="submit" [disabled]="messageForm.invalid" class="form__button">
-    <mat-icon aria-label="send icon" fontIcon="send"></mat-icon>
+    <mat-icon aria-label="send icon" fontIcon="send" class="icon icon--purple"></mat-icon>
   </button>
 </form>

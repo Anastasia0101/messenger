@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 import { Chat } from 'src/app/models/chat.model';
 import { ChatsService } from 'src/app/services/chats.service';
 
@@ -11,7 +11,7 @@ import { ChatsService } from 'src/app/services/chats.service';
 })
 export class ChatComponent implements OnInit {
 
-  chat!: Chat;
+  chat$!: Observable<Chat>;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,12 +19,10 @@ export class ChatComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.paramMap.pipe(
+    this.chat$ = this.route.paramMap.pipe(
       switchMap(params => {
-        return this.chatsService.activateChat(params.get('id')!)
+        return this.chatsService.activateChat(params.get('id')!);
       })
-    ).subscribe((chat) => {
-      this.chat = chat!;
-    });
+    );
   }
 }
