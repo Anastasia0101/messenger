@@ -15,10 +15,6 @@
   border: none;
 }
 
-.form__input:focus {
-  outline: none;
-}
-
 .form__input::placeholder {
   @include secondary-text;
   font-size: 14px;
@@ -35,16 +31,27 @@
 
 .icon {
   margin: 5px;
-  color: #9A9A9A;
+  color: #7d66ea;
+  transition: all .5s;
 }
 
 .icon--rotated {
   transform: rotate(40deg);
 }
 
-.form__button:enabled:hover {
-  .icon {
-    color: #7d66ea;
-    cursor: pointer;
+.form__button {
+  &:enabled:hover {
+    .icon {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+    .icon--rotated  {
+      transform: rotate(40deg) scale(1.2);
+    }
+  }
+  &:disabled {
+    .icon {
+      color: #484848;
+    }
   }
 }
