@@ -1,0 +1,19 @@
+@import '../../../../../scss/styles.scss';
+
+.messenger {
+  display: flex;
+  height: 100%;
+}
+
+.messenger__sidebar {
+  width: 30%;
+  max-width: 300px;
+  margin: 0 auto;
+  // background-color: #f6f8fa ;
+  border-right: $componentBorder;
+}
+
+.messager__chat {
+  width: 70%;
+  flex-grow: 1;
+}

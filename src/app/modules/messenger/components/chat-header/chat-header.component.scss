@@ -1,0 +1,18 @@
+@import '../../../../../scss/styles.scss';
+
+.user {
+  display: flex;
+  align-items: center;
+  // background-color: $darkBackground;
+  height: 10%;
+  border-bottom: $componentBorder;
+}
+
+.user__avatar {
+  @include avatar;
+  margin: 10px;
+}
+
+.user__nickname {
+  @include main-text;
+}

@@ -10,10 +10,11 @@ export class UsersService {
     private fireStore: AngularFirestore,
   ) { }
 
-  createUser(avatar: string, nickname: string): void {
+  createUser(avatar: string, nickname: string, email: string): void {
     this.fireStore.collection('users').add({
       avatar: avatar,
-      nickname: nickname
+      nickname: nickname,
+      email: email
     });
   }
 }
