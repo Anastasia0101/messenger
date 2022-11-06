@@ -12,16 +12,17 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
-import { UsersService } from './services/users.service';
-
 import { environment } from 'src/environments/environment';
 
 import { MaterialModule } from './modules/shared/material.module';
-import { MessengerModule } from './modules/messenger/messenger.module';
+// import { MessengerModule } from './modules/messenger/messenger.module';
+// import { UsersListComponent } from './modules/users-list/components/users-list/users-list.component';
+// import { UsersService } from './modules/users-list/services/users.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    // UsersListComponent
   ],
   imports: [
     BrowserModule,
@@ -35,10 +36,10 @@ import { MessengerModule } from './modules/messenger/messenger.module';
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
-    MessengerModule
+    // MessengerModule
   ],
   providers: [
-    UsersService
+    // UsersService
   ],
   bootstrap: [AppComponent]
 })

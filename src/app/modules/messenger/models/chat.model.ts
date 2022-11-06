@@ -1,4 +1,4 @@
-import { User } from "../../../models/user.model";
+import { User } from "../../shared/models/user.model";
 import { Message } from "./message.model";
 
 export interface Chat {

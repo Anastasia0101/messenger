@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Message } from '../../models/message.model';
-import { User } from 'src/app/models/user.model';
+import { User } from 'src/app/modules/shared/models/user.model';
 
 @Component({
   selector: 'app-messages-list-item',

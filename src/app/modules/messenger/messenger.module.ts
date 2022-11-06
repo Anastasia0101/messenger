@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -53,11 +52,10 @@ import { RouterModule } from '@angular/router';
     AngularFireStorageModule,
     AngularFireAuthModule,
     HttpClientModule,
-    BrowserAnimationsModule,
     MaterialModule,
     RouterModule.forChild([
       {
-        path: 'chats',
+        path: '',
         component: ChatsPageComponent,
         children: [
           {
@@ -68,7 +66,6 @@ import { RouterModule } from '@angular/router';
             path: '**',
             component: ChatNotSelectedComponent
           }
-
         ]
       },
     ])

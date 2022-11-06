@@ -3,8 +3,8 @@
   <div class="link__chat-info chat-info">
     <div class="chat-info__header">
       <p class="nickname">{{chat.opponent.nickname}}</p>
-      <p class="time">20:20 PM</p>
+      <p class="time">{{chat.messages[0].dateOfSending | date: 'shortTime'}}</p>
     </div>
-    <p class="chat-info__message">last message</p>
+    <p class="chat-info__message">{{chat.messages[0].text}}</p>
   </div>
 </a>

@@ -1,6 +1,6 @@
 import { AfterViewChecked, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Message } from '../../models/message.model';
-import { User } from 'src/app/models/user.model';
+import { User } from 'src/app/modules/shared/models/user.model';
 import { ChatsService } from 'src/app/modules/messenger/services/chats.service';
 
 @Component({

@@ -4,7 +4,7 @@ import { Observable } from "rxjs/internal/Observable";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 import { HttpClient } from '@angular/common/http';
 import { from, tap, map } from "rxjs";
-import { User } from "../../../models/user.model";
+import { User } from "../../shared/models/user.model";
 
 @Injectable({
   providedIn: 'root',
@@ -25,12 +25,10 @@ export class ChatsService {
     return this.getChats();
   }
 
-  saveChat(): void{
-    const currentDate = new Date();
+  saveChat(currUser: User, opponent: User): void {
     this.fireStore.collection('chats').add({
-      currentUser: this.activeChat.currentUser,
-      opponent: { nickname: 'Katya202', avatar: this.activeChat.opponent.avatar },
-      messages: [{ text: 'Hola!', sender: this.activeChat.currentUser, dateOfSending: currentDate.toString() }]
+      participants: [ currUser, opponent ],
+      messages: []
     });
   }
 

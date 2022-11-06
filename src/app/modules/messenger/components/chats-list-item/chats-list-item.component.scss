@@ -48,7 +48,6 @@
 .chat-info__message {
   @include secondary-text;
   @include text-overflow;
-  line-height: 20px;
 }
 
 @media screen and (max-width: 650px) {

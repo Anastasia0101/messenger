@@ -1,0 +1,8 @@
+<p>Users</p>
+
+<ul *ngIf="users$">
+  <li *ngFor="let user of users$ | async">
+    <p>{{user.nickname}}</p>
+    <button type="button">Create Chat</button>
+  </li>
+</ul>
