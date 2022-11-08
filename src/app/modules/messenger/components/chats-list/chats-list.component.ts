@@ -16,6 +16,6 @@ export class ChatsListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.chats$ = this.chatsService.chats$;
+    this.chats$ = this.chatsService.getChats();
   }
 }

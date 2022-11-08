@@ -8,16 +8,16 @@ import { ChatsService } from 'src/app/modules/messenger/services/chats.service';
   templateUrl: './messages-list.component.html',
   styleUrls: ['./messages-list.component.scss']
 })
-export class MessagesListComponent implements OnInit, AfterViewChecked {
+export class MessagesListComponent implements AfterViewChecked {
   @Input() messages?: Message[];
   @ViewChild('messagesList') messagesListEl!: ElementRef;
   currentUser!: User;
 
   constructor(private chatsService: ChatsService) {}
 
-  ngOnInit(): void {
-    this.currentUser = this.chatsService.activeChat.currentUser;
-  }
+  // ngOnInit(): void {
+    // this.currentUser = this.chatsService.activeChat.currentUser;
+  // }
 
   ngAfterViewChecked(): void {
     this.messagesListEl.nativeElement.scrollTop = this.messagesListEl.nativeElement.scrollHeight;

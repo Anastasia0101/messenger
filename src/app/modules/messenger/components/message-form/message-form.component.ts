@@ -27,7 +27,7 @@ export class MessageFormComponent {
     if(!messageText.trim()) {
       return;
     }
-    this.chatsService.sendMessage(messageText, this.chatsService.activeChat.currentUser);
+    // this.chatsService.sendMessage(messageText, this.chatsService.activeChat.currentUser);
   }
 }
 

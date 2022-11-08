@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { Chat } from "../models/chat.model";
 import { Observable } from "rxjs/internal/Observable";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
-import { HttpClient } from '@angular/common/http';
 import { from, tap, map } from "rxjs";
 import { User } from "../../shared/models/user.model";
 
@@ -14,20 +13,20 @@ export class ChatsService {
 
   constructor(
     private fireStore: AngularFirestore,
-    private httpClient: HttpClient,
   ) { }
 
   getChats(): Observable<Chat[]> {
-    return this.fireStore.collection<Chat>('chats').valueChanges({ idField: 'id' });
+    const userRef = this.fireStore.collection('users').doc('ompCzENiYB1cKgU1AnC9').ref;
+    return this.fireStore.collection<Chat>('chats', ref => ref.where('participants', 'array-contains', userRef))
+      .valueChanges();
   }
 
-  get chats$(): Observable<Chat[]> {
-    return this.getChats();
-  }
-
-  saveChat(currUser: User, opponent: User): void {
+  createChat(collocutorId: string): void {
     this.fireStore.collection('chats').add({
-      participants: [ currUser, opponent ],
+      participants: [
+        this.fireStore.firestore.doc('users/ompCzENiYB1cKgU1AnC9'),
+        this.fireStore.doc('users/' + collocutorId).ref
+      ],
       messages: []
     });
   }
