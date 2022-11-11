@@ -15,14 +15,10 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from 'src/environments/environment';
 
 import { MaterialModule } from './modules/shared/material.module';
-// import { MessengerModule } from './modules/messenger/messenger.module';
-// import { UsersListComponent } from './modules/users-list/components/users-list/users-list.component';
-// import { UsersService } from './modules/users-list/services/users.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    // UsersListComponent
   ],
   imports: [
     BrowserModule,
@@ -36,11 +32,8 @@ import { MaterialModule } from './modules/shared/material.module';
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
-    // MessengerModule
   ],
-  providers: [
-    // UsersService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

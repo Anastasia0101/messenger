@@ -9,6 +9,10 @@ const routes: Routes = [
   {
     path: 'chats',
     loadChildren: () => import('./modules/messenger/messenger.module').then(m => m.MessengerModule)
+  },
+  {
+    path: 'sign-up',
+    loadChildren: () => import('./modules/sign-up/sign-up.module').then(m => m.SignUpModule)
   }
 ];
 

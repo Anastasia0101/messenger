@@ -24,9 +24,7 @@ export class MessageFormComponent {
   onFormSubmit(): void {
     const messageText = this.messageForm.value.text as string;
     this.messageForm.patchValue({text: ''});
-    if(!messageText.trim()) {
-      return;
-    }
+    if (!messageText.trim()) return;
     // this.chatsService.sendMessage(messageText, this.chatsService.activeChat.currentUser);
   }
 }

@@ -1,0 +1,44 @@
+@import '../../../../../scss/styles.scss';
+
+.container {
+  font-size: 17px;
+  padding: 1em;
+}
+
+.container__title {
+  @include main-text;
+  text-align: center;
+  font-size: 4em;
+  margin-top: 2em;
+  line-height: normal;
+}
+
+.container__form {
+  width: 50%;
+  max-width: 400px;
+  margin: 3em auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field {
+  margin-top: 20px;
+}
+
+.form__button {
+  width: 30%;
+  min-width: 100px;
+  margin: 4em auto 0;
+  padding: 5px 15px;
+  font-size: 1em;
+}
+
+.form__button:disabled {
+  background-color: #c8ddff;
+}
+
+.form__button:hover:enabled {
+  cursor: pointer;
+  background-color: #1735df;
+  color: #FFFFFF;
+}
