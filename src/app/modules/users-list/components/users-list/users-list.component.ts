@@ -14,7 +14,7 @@ export class UsersListComponent implements OnInit {
   users$!: Observable<User[]>;
   constructor(
     private usersService: UsersService,
-    private chatService: ChatsService
+    private chatService: ChatsService,
   ) { }
 
   ngOnInit(): void {

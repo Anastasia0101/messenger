@@ -1,5 +1,4 @@
 <p>Users</p>
-
 <ul *ngIf="users$">
   <li *ngFor="let user of users$ | async">
     <p>{{user.nickname}}</p>

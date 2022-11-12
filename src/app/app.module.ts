@@ -14,6 +14,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { environment } from 'src/environments/environment';
 
+import { SharedModule } from './modules/shared/shared.module';
 import { MaterialModule } from './modules/shared/material.module';
 
 @NgModule({
@@ -32,6 +33,7 @@ import { MaterialModule } from './modules/shared/material.module';
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,24 +1,53 @@
 import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { AngularFirestore, AngularFirestoreDocument } from "@angular/fire/compat/firestore";
+import { Router } from "@angular/router";
+import { from, Observable, of, tap } from "rxjs";
 import { User } from "../../shared/models/user.model";
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  userData!: firebase.default.User;
   constructor(
-    public fireStore: AngularFirestore,
-    public fireAuth: AngularFireAuth
-  ) {}
+    private fireStore: AngularFirestore,
+    private fireAuth: AngularFireAuth,
+    private router: Router
+  ) {
+    this.fireAuth.authState.subscribe((user) => {
+      if (user) {
+        this.userData = user;
+        localStorage.setItem('token', JSON.stringify(this.userData));
+        return;
+      }
+      localStorage.setItem('token', 'null');
+      JSON.parse(localStorage.getItem('user')!);
+    });
+  }
 
-  signUp(email: string, password: string): Promise<void> {
-    return this.fireAuth
-      .createUserWithEmailAndPassword(email, password)
-      .then((result) => {
+  isUserAuthenticated(): boolean {
+    const token = JSON.parse(localStorage.getItem('token')!);
+    console.log(!!token);
+    if (token) return true;
+    return false;
+  }
+
+  signIn(email: string, password: string): void {
+    from(this.fireAuth.signInWithEmailAndPassword(email, password)).pipe(
+      tap((result) => {
+        this.setUserData(result.user!);
+      }));
+  }
+
+  signUp(email: string, password: string): void {
+    from(this.fireAuth.createUserWithEmailAndPassword(email, password)).pipe(
+      tap((result) => {
         this.sendVerificationEmail();
         this.setUserData(result.user!);
-      });
+        this.router.navigate(['/users']);
+      })
+    );
   }
 
   sendVerificationEmail(): Promise<void> {
@@ -37,5 +66,13 @@ export class AuthService {
     return userRef.set(userData, {
       merge: true,
     });
+  }
+
+  signOut(): void {
+    from(this.fireAuth.signOut()).pipe(
+      tap(() => {
+        localStorage.removeItem('token');
+      }),
+    );
   }
 }
