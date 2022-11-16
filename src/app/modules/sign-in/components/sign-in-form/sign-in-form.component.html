@@ -1,0 +1,17 @@
+<div class="container">
+  <h2 class="container__title">Sign in</h2>
+  <form [formGroup]="signInForm" (submit)="onFormSubmit()" class="container__form form">
+    <mat-form-field class="form-field">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" placeholder="Enter email here..." formControlName="email">
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" placeholder="Enter password here..." formControlName="password">
+    </mat-form-field>
+    <button mat-raised-button type="submit" color="primary" [disabled]="signInForm.invalid" class="form__button">
+      Sign in
+    </button>
+    <a routerLink="/sign-up">Create account</a>
+  </form>
+</div>

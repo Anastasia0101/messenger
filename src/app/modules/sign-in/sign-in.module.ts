@@ -3,29 +3,25 @@ import { CommonModule } from '@angular/common';
 
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { SignInFormComponent } from './components/sign-in-form/sign-in-form.component';
 import { MaterialModule } from '../shared/material.module';
-import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.component';
-import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
-    SignUpFormComponent,
+    SignInFormComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild([
       {
         path: '',
-        component: SignUpFormComponent
-      },
+        component: SignInFormComponent
+      }
     ]),
     FormsModule,
     ReactiveFormsModule,
     MaterialModule
   ],
-  providers: [
-    AuthService
-  ],
+  providers: [],
 })
-export class SignUpModule { }
+export class SignInModule { }

@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.servce';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-sign-up-form',
   templateUrl: './sign-up-form.component.html',
   styleUrls: ['./sign-up-form.component.scss']
 })
-export class SignUpFormComponent {
+export class SignUpFormComponent implements OnDestroy {
   signUpForm = this.formBuilder.group({
     email: ['', [
       Validators.required,
@@ -21,15 +22,22 @@ export class SignUpFormComponent {
       Validators.minLength(5)
     ]]
   });
+  subscription$!: Subscription;
 
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
+    private router: Router
   ) { }
 
   onFormSubmit(): void {
     const formData = this.signUpForm.value;
-    this.signUpForm.patchValue({email: '', password: ''});
-    this.authService.signUp(formData.email!, formData.password!);
+    this.subscription$ = this.authService.signUp(formData.email!, formData.password!).subscribe(() => {
+      this.router.navigate(['/users']);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription$.unsubscribe();
   }
 }

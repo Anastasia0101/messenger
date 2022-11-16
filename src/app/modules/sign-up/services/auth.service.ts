@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { AngularFirestore, AngularFirestoreDocument } from "@angular/fire/compat/firestore";
 import { Router } from "@angular/router";
-import { from, Observable, of, tap } from "rxjs";
+import { from, map, Observable, tap } from "rxjs";
 import { User } from "../../shared/models/user.model";
 
 @Injectable({
@@ -34,19 +34,19 @@ export class AuthService {
   }
 
   signIn(email: string, password: string): void {
-    from(this.fireAuth.signInWithEmailAndPassword(email, password)).pipe(
-      tap((result) => {
-        this.setUserData(result.user!);
-      }));
+     from(this.fireAuth.signInWithEmailAndPassword(email, password));
+      // tap((result) => {
+      //   this.setUserData(result.user!);
+      // }));
   }
 
-  signUp(email: string, password: string): void {
-    from(this.fireAuth.createUserWithEmailAndPassword(email, password)).pipe(
+  signUp(email: string, password: string): Observable<firebase.default.User> {
+    return from(this.fireAuth.createUserWithEmailAndPassword(email, password)).pipe(
       tap((result) => {
         this.sendVerificationEmail();
         this.setUserData(result.user!);
-        this.router.navigate(['/users']);
-      })
+      }),
+      map((result) => result.user!)
     );
   }
 
