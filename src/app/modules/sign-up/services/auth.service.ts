@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { AngularFirestore, AngularFirestoreDocument } from "@angular/fire/compat/firestore";
 import { Router } from "@angular/router";
-import { from, map, Observable, tap } from "rxjs";
+import { catchError, from, map, Observable, tap, throwError } from "rxjs";
 import { User } from "../../shared/models/user.model";
 
 @Injectable({
@@ -40,11 +40,15 @@ export class AuthService {
       // }));
   }
 
-  signUp(email: string, password: string): Observable<firebase.default.User> {
+  signUp(email: string, password: string, nickname: string): Observable<firebase.default.User> {
     return from(this.fireAuth.createUserWithEmailAndPassword(email, password)).pipe(
+      catchError(error => {
+        console.log('Sign up error' + error.code);
+        return throwError(error);
+      }),
       tap((result) => {
         this.sendVerificationEmail();
-        this.setUserData(result.user!);
+        this.setUserData(result.user!, nickname);
       }),
       map((result) => result.user!)
     );
@@ -54,13 +58,13 @@ export class AuthService {
     return this.fireAuth.currentUser.then((user) => user!.sendEmailVerification());
   }
 
-  setUserData(user: firebase.default.User): Promise<void> {
+  setUserData(user: firebase.default.User, nickname: string): Promise<void> {
     const userRef: AngularFirestoreDocument<User> = this.fireStore.doc(`users/${user.uid}`);
     console.log('set user data');
     const userData: User = {
       id: user.uid,
       email: user.email!,
-      nickname: user.displayName!,
+      nickname: nickname,
       avatar: user.photoURL!,
     };
     return userRef.set(userData, {
