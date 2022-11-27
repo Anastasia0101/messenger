@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
-import { AuthOnlyGuard } from './guards/auth-only.guard';
+import { LoggedOnlyGuard } from './guards/logged-only.guard';
+import { UnLoggedOnlyGuard } from './guards/unlogged-only.guard';
 
 @NgModule({
-  imports: [],
-  exports: [],
-  declarations: [],
   providers: [
-    AuthOnlyGuard
+    LoggedOnlyGuard,
+    UnLoggedOnlyGuard
   ],
 })
 export class SharedModule { }
