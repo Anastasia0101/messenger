@@ -19,13 +19,14 @@ export class SignUpFormComponent implements OnDestroy {
     password: ['', [
       Validators.required,
       Validators.pattern(/^\S*$/),
-      Validators.minLength(3)
+      Validators.minLength(4)
     ]],
     nickname: ['', [
       Validators.required,
       Validators.minLength(4)
     ]]
   });
+  isEmailInUse = false;
   subscription$!: Subscription;
 
   constructor(
@@ -39,11 +40,14 @@ export class SignUpFormComponent implements OnDestroy {
     this.subscription$ = this.authService.signUp(formData.email!, formData.password!, formData.nickname!)
       .subscribe({
         next: () => this.router.navigate(['/users']),
-        error: () => this.signUpForm.controls.email.setErrors({isEmailInUse: true}),
+        error: () => {
+          this.signUpForm.controls.email.setErrors({isEmailInUse: true}),
+          this.isEmailInUse = true;
+        }
       });
   }
 
   ngOnDestroy(): void {
-    this.subscription$.unsubscribe();
+    this.subscription$?.unsubscribe();
   }
 }

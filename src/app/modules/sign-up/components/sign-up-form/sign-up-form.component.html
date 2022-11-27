@@ -4,7 +4,7 @@
     <mat-form-field class="form-field">
       <mat-label>Email</mat-label>
       <input matInput type="email" placeholder="Enter email here..." formControlName="email">
-      <mat-error>This email is already in use.</mat-error>
+      <mat-error *ngIf="isEmailInUse">This email is already in use.</mat-error>
     </mat-form-field>
     <mat-form-field class="form-field">
       <mat-label>Password</mat-label>
@@ -14,9 +14,12 @@
       <mat-label>Nickname</mat-label>
       <input matInput type="text" placeholder="Enter nickname here..." formControlName="nickname">
     </mat-form-field>
-
     <button mat-raised-button type="submit" color="primary" [disabled]="signUpForm.invalid" class="form__button">
       Sign up
     </button>
   </form>
+  <p class="container__text">
+    Already have an account?
+    <a routerLink="/sign-in" class="link">Sign in</a>
+  </p>
 </div>

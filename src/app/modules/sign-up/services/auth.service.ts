@@ -4,12 +4,13 @@ import { AngularFirestore, AngularFirestoreDocument } from "@angular/fire/compat
 import { Router } from "@angular/router";
 import { catchError, from, map, Observable, tap, throwError } from "rxjs";
 import { User } from "../../shared/models/user.model";
+type DefaultFireUser = firebase.default.User;
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  userData!: firebase.default.User;
+  userData!: DefaultFireUser;
   constructor(
     private fireStore: AngularFirestore,
     private fireAuth: AngularFireAuth,
@@ -33,21 +34,17 @@ export class AuthService {
     return false;
   }
 
-  signIn(email: string, password: string): void {
-     from(this.fireAuth.signInWithEmailAndPassword(email, password));
-      // tap((result) => {
-      //   this.setUserData(result.user!);
-      // }));
+  signIn(email: string, password: string): Observable<DefaultFireUser> {
+    return from(this.fireAuth.signInWithEmailAndPassword(email, password)).pipe(
+      catchError(error => throwError(error)),
+      map(result => result.user!)
+    );
   }
 
   signUp(email: string, password: string, nickname: string): Observable<firebase.default.User> {
     return from(this.fireAuth.createUserWithEmailAndPassword(email, password)).pipe(
-      catchError(error => {
-        console.log('Sign up error' + error.code);
-        return throwError(error);
-      }),
+      catchError(error => throwError(error)),
       tap((result) => {
-        this.sendVerificationEmail();
         this.setUserData(result.user!, nickname);
       }),
       map((result) => result.user!)
@@ -58,9 +55,8 @@ export class AuthService {
     return this.fireAuth.currentUser.then((user) => user!.sendEmailVerification());
   }
 
-  setUserData(user: firebase.default.User, nickname: string): Promise<void> {
+  setUserData(user: DefaultFireUser, nickname: string): Promise<void> {
     const userRef: AngularFirestoreDocument<User> = this.fireStore.doc(`users/${user.uid}`);
-    console.log('set user data');
     const userData: User = {
       id: user.uid,
       email: user.email!,
