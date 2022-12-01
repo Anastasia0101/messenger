@@ -1,0 +1,11 @@
+<div *ngIf="user" class="user">
+  <div class="user__menu">
+    <button mat-icon-button>
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </div>
+  <img [src]="user.avatar" alt="user avatar" class="user__img" />
+  <p class="user__text">{{user.nickname}}</p>
+  <button type="button" (click)="createChat(user.id)" class="user__button">CREATE CHAT</button>
+</div>
+

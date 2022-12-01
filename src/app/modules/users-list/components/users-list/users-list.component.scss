@@ -1,0 +1,30 @@
+.container {
+  background-color: #f6f6fa;
+}
+
+.container__users-list {
+  width: 70%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.users-list {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  gap: 2em;
+}
+
+.users-list__item {
+  width: 30%;
+  max-width: 300px;
+  min-width: 200px;
+  box-sizing: border-box;
+  flex-grow: 1;
+}
+
+@media (max-width: 950px) {
+  .users-list__item {
+    width: 40%;
+  }
+}

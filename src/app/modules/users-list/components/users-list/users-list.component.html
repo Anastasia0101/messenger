@@ -1,9 +1,8 @@
-<p>Users</p>
-<ul *ngIf="users$">
-  <li *ngFor="let user of users$ | async">
-    <p>{{user.nickname}}</p>
-    <button type="button" (click)="createChat(user.id)">Create Chat</button>
-  </li>
-</ul>
-
-<button type="button" (click)="signOut()">Sign out</button>
+<div class="container">
+  <h2 class="conatiner__title">Users</h2>
+  <ul *ngIf="users$" class="container__users-list users-list">
+    <li *ngFor="let user of users$ | async" class="users-list__item">
+      <app-user [user]="user"></app-user>
+    </li>
+  </ul>
+</div>

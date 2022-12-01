@@ -6,10 +6,12 @@ import { UsersListComponent } from './components/users-list/users-list.component
 import { UsersService } from './services/users.service';
 
 import { RouterModule } from '@angular/router';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
-    UsersListComponent
+    UsersListComponent,
+    UserComponent
   ],
   imports: [
     CommonModule,

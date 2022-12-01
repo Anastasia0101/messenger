@@ -10,7 +10,7 @@ type DefaultFireUser = firebase.default.User;
   providedIn: 'root',
 })
 export class AuthService {
-  userData!: DefaultFireUser;
+  currentUserData!: DefaultFireUser;
   constructor(
     private fireStore: AngularFirestore,
     private fireAuth: AngularFireAuth,
@@ -18,8 +18,8 @@ export class AuthService {
   ) {
     this.fireAuth.authState.subscribe((user) => {
       if (user) {
-        this.userData = user;
-        localStorage.setItem('token', JSON.stringify(this.userData));
+        this.currentUserData = user;
+        localStorage.setItem('token', JSON.stringify(this.currentUserData));
         return;
       }
       localStorage.setItem('token', 'null');

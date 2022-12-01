@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Chat } from "../models/chat.model";
 import { Observable } from "rxjs/internal/Observable";
-import { AngularFirestore } from "@angular/fire/compat/firestore";
+import { AngularFirestore, DocumentReference } from "@angular/fire/compat/firestore";
 import { from, tap, map } from "rxjs";
 import { User } from "../../shared/models/user.model";
 
@@ -21,14 +21,16 @@ export class ChatsService {
       .valueChanges();
   }
 
-  createChat(collocutorId: string): void {
-    this.fireStore.collection('chats').add({
+  createChat(collocutorId: string): Observable<string> {
+    return from(this.fireStore.collection('chats').add({
       participants: [
         this.fireStore.firestore.doc('users/ompCzENiYB1cKgU1AnC9'),
         this.fireStore.doc('users/' + collocutorId).ref
       ],
       messages: []
-    });
+    })).pipe(
+      map(document => document.id)
+    );
   }
 
   getChatById(id: string): Observable<Chat> {
